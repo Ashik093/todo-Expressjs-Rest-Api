@@ -34,7 +34,7 @@ app.use(limiter)
 
 //mongodb connection
 let URI = "mongodb://127.0.0.1:27017/Todo"
-let OPTION = { user: '', pass: '' }
+let OPTION = { user: '', pass: '', autoIndex: true }
 mongoose.connect(URI, OPTION, (error) => {
     console.log("Database Connection Success")
     console.log(error)
