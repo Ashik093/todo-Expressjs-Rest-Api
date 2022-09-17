@@ -29,12 +29,26 @@ exports.Login = (req, res) => {
     })
 }
 exports.SelectProfile = (req, res) => {
-    let userName = req.body['UserName']
+    let userName = req.headers['username']
     ProfileModel.find({ UserName: userName }, (error, data) => {
         if (error === null && data.length > 0) {
-            res.status(200).json({ status: "success", token: token, data: data[0] })
+            res.status(200).json({ status: "success", data: data[0] })
         } else {
             res.status(401).json({ status: "unauthorized", data: error })
+        }
+    })
+}
+
+exports.UpdateProfile = (req, res) => {
+    let userName = req.headers['username']
+    let reqBody = req.body
+    ProfileModel.updateOne({ UserName: userName }, { $set: reqBody }, {
+        upsert: true
+    }, (error, data) => {
+        if (error) {
+            res.status(400).json({ status: "failed", data: error })
+        } else {
+            res.status(200).json({ status: "success", data: data })
         }
     })
 }

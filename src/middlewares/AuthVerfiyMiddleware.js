@@ -4,6 +4,7 @@ module.exports = (req, res, next) => {
         if (error) {
             res.status(401).json({ status: "Unauthorized", data: error })
         } else {
+            req.headers.username = data['data']['UserName']
             next()
         }
     })
