@@ -12,6 +12,10 @@ router.post("/UpdateProfile", AuthVerifyMiddleware, ProfileController.UpdateProf
 router.post('/CreateTodoList', AuthVerifyMiddleware, TodoListController.CreateTodoList)
 router.get('/SelectTodoList', AuthVerifyMiddleware, TodoListController.SelectTodoList)
 router.post('/UpdateTodoList', AuthVerifyMiddleware, TodoListController.UpdateTodoList)
+router.post('/UpdateStatusToDoList', AuthVerifyMiddleware, TodoListController.UpdateStatusToDo)
+router.post('/RemoveToDoList', AuthVerifyMiddleware, TodoListController.RemoveToDo)
+router.post('/SelectTodoListByStatus', AuthVerifyMiddleware, TodoListController.SelectTodoListByStatus)
+router.post('/SelectTodoListByDate', AuthVerifyMiddleware, TodoListController.SelectTodoListByDate)
 
 
 module.exports = router
